@@ -1,0 +1,44 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="content-section">
+        <form method="POST" class="border rounded p-4 shadow-lg">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4 h2 font-weight-bold text-primary text-center">Join Today</legend>
+                
+                <!-- Replace the following lines with your actual form fields -->
+                <div class="form-group">
+                    <label for="{{ form.username.id_for_label }}" class="font-weight-bold">Username</label>
+                    {{ form.username }}
+                </div>
+                
+                <div class="form-group">
+                    <label for="{{ form.email.id_for_label }}" class="font-weight-bold">Email</label>
+                    {{ form.email }}
+                </div>
+                
+                <div class="form-group">
+                    <label for="{{ form.password1.id_for_label }}" class="font-weight-bold">Password</label>
+                    {{ form.password1 }}
+                </div>
+                
+                <div class="form-group">
+                    <label for="{{ form.password2.id_for_label }}" class="font-weight-bold">Confirm Password</label>
+                    {{ form.password2 }}
+                </div>
+                <!-- End of form fields -->
+
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Sign Up</button>
+            </div>
+        </form>
+        <div class="border-top pt-3 mt-3 text-center">
+            <small class="text-muted">
+                Already have an account? <a class="ml-2 text-info" href="{% url 'login' %}">Sign in</a>
+            </small>
+        </div>
+    </div>
+{% endblock content %}
